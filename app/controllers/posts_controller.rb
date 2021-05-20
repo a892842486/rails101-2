@@ -14,16 +14,17 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      redirect_to group_path(@gorup)
+      redirect_to group_path(@group)
     else
       render :new
     end
+  end
+
+
+  private
+
+  def post_params
+    params.require(:post).permit(:content)
+  end
+
 end
-
-
-private
-
-def post_params
-  param.require(:post),permit(:content)
-end
-end 
